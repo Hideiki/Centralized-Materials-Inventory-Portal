@@ -1,0 +1,2 @@
+import{J as t}from"./index-CqO6HPCo.js";const e=t({doctype:"Material Return",fields:["name","return_no","date_return","returned_to","reference_type","reference_no","requested_by","received_by","department_section","return_status","return_reason","remarks","total_amount"],orderBy:"creation desc",auto:!0});function n(){e.fetch()}function s(){e.reload()}function o(r){return e.insert.submit(r)}export{n as f,e as m,s as r,o as s};
+//# sourceMappingURL=returns-_VmBwK2v.js.map

@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-29 08:32:38.520815",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_reorder_level",
+  "default_landing_page",
+  "items_per_page"
+ ],
+ "fields": [
+  {
+   "default": "5",
+   "fieldname": "default_reorder_level",
+   "fieldtype": "Int",
+   "label": "Default Reorder Level"
+  },
+  {
+   "fieldname": "default_landing_page",
+   "fieldtype": "Select",
+   "label": "Default Landing Page",
+   "options": "Dashboard\nProduct Inventory\nStock In / Receiving\nStock Out / Withdrawal\nReports"
+  },
+  {
+   "default": "10",
+   "fieldname": "items_per_page",
+   "fieldtype": "Int",
+   "label": "Items Per Page"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-07-31 08:18:12.690632",
+ "modified_by": "Administrator",
+ "module": "Cmip",
+ "name": "Portable Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
