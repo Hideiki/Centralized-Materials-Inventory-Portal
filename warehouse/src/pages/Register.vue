@@ -137,7 +137,7 @@ function validatePassword(password) {
     if (!/[0-9]/.test(password)) {
         return 'Password must contain at least one number'
     }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    if (!/[!@#$%^&*(),.?":`{}|<>_-]/.test(password)) {
         return 'Password must contain at least one special character'
     }
     return null
@@ -176,7 +176,7 @@ async function handleRegister() {
     console.log("Sending registration...", form)
 
     try {
-        const response = await fetch('http://cmip.localhost:8000/api/method/cmip.api.register_user',
+        const response = await fetch('/api/method/cmip.api.register_user',
             {
                 method: 'POST',
                 headers: {
