@@ -96,7 +96,7 @@
                 </div>
                 <div>
                     <p class="text-sm font-medium text-gray-700 mb-1">Department / Section <span class="text-red-500">*</span></p>
-                    <select v-model="form.department_section" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none 
+                    <select v-model="form.department__section" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none 
                     focus:ring-1 focus:ring-blue-500 cursor-pointer">
                         <option value="" disabled>Select department</option>
                         <option v-for="dept in departmentOptions" :key="dept" :value="dept">{{ dept }}</option>
@@ -267,7 +267,7 @@ const search = ref('')
 const isSaving = ref(false)
 const savingAs = ref('')
 
-const warehouseOptions = ['Main Warehouse', 'Construction Site A', 'Construction Site B', 'Storage Facility']
+const warehouseOptions = ['Main Warehouse', 'Construction A', 'Construction B', 'Storage Facility']
 const departmentOptions = ['Operations', 'Construction', 'Procurement', 'Administration', 'Warehouse', 'Other']
 const referenceTypes = ['Stock In / Receiving', 'Stock Out / Withdrawal']
 const returnReasons = ['Overstock / Excess', 'Damaged / Defective', 'Wrong Item', 'Quality Issue', 'Other']
@@ -280,7 +280,7 @@ const form = reactive({
     reference_no: '',
     requested_by: '',
     received_by: '',
-    department_section: '',
+    department__section: '',
     return_reason: '',
     remarks: '',
     items: [],
@@ -365,7 +365,7 @@ function resetForm() {
     form.reference_no = ''
     form.requested_by = ''
     form.received_by = ''
-    form.department_section = ''
+    form.department__section = ''
     form.return_reason = ''
     form.remarks = ''
     form.items = []
@@ -378,7 +378,7 @@ function cancelForm() {
 
 async function submitForm(status) {
     if (!form.return_no || !form.returned_to || !form.reference_type || !form.reference_no
-        || !form.requested_by || !form.received_by || !form.department_section || !form.return_reason) {
+        || !form.requested_by || !form.received_by || !form.department__section || !form.return_reason) {
         toast.error('Please fill in all required fields')
         return
     }

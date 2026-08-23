@@ -11,7 +11,7 @@ export const materialReturnList = createListResource({
         'reference_no',
         'requested_by',
         'received_by',
-        'department_section',
+        'department__section',
         'return_status',
         'return_reason',
         'remarks',
