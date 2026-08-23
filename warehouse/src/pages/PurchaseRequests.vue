@@ -554,7 +554,7 @@ function emptyForm() {
     return {
         request_no: generateRequestNo(),
         date_requested: todayLocalStr(),
-        requested_by: currentUser?.value?.username || currentUser?.value?.name || '',
+        requested_by: currentUser?.value?.name || '',
         supplier: '',
         status: 'Pending',
         items: [],
@@ -573,7 +573,7 @@ function todayLocalStr() {
 function openAddModal() {
     formError.value = ''
     Object.assign(form, emptyForm())
-    form.requested_by = currentUser?.value?.username || currentUser?.value?.name || ''
+    form.requested_by = currentUser?.value?.name || ''
     showAddModal.value = true
 }
 
