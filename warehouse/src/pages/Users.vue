@@ -310,10 +310,9 @@ function formatDate(dateStr) {
 
 function roleBadgeClass(role) {
     switch (role) {
-        case 'Administrator': return 'bg-blue-100 text-blue-700'
+        case 'CMIP Administrator': return 'bg-blue-100 text-blue-700'
         case 'Inventory Manager': return 'bg-violet-100 text-violet-700'
         case 'Warehouse Staff': return 'bg-orange-100 text-orange-700'
-        case 'Requestor': return 'bg-sky-100 text-sky-700'
         default: return 'bg-gray-100 text-gray-600'
     }
 }

@@ -1,6 +1,5 @@
 import { createResource } from 'frappe-ui'
 
-/* update yung basic info (full name, username) ng currently logged-in user */
 export async function updateAccountInfo(values) {
     const getResource = createResource({ url: 'frappe.client.get' })
     const saveResource = createResource({ url: 'frappe.client.save' })
@@ -13,10 +12,20 @@ export async function updateAccountInfo(values) {
     return saveResource.submit({ doc })
 }
 
-/* Built-in Frappe method para sa password change ng SARILING account */
-export function updatePassword(newPassword) {
+export function updatePassword(newPassword, userEmail) {
+    console.log('Updating password for user email:', userEmail) // Debug log
+    
     const changePassword = createResource({
         url: 'frappe.core.doctype.user.user.update_password',
+        method: 'POST',
     })
-    return changePassword.submit({ new_password: newPassword })
+    
+    // Use the email as the 'user' parameter
+    const payload = { 
+        user: userEmail,  // This MUST be the email, not username
+        new_password: newPassword 
+    }
+    console.log('Password update payload:', payload)
+    
+    return changePassword.submit(payload)
 }

@@ -73,7 +73,7 @@
                             <div>
                                 <div class="relative">
                                     <input :type="showNewPw ? 'text' : 'password'" v-model="account.new_password" 
-                                    placeholder="Enter new password" class="w-full px-3 py-2 pr-9 border border-gray-300 
+                                    placeholder="New password" class="w-full px-3 py-2 pr-9 border border-gray-300 
                                     rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
                                     <button type="button" @click="showNewPw = !showNewPw" class="absolute right-2.5 top-1/2 
                                     -translate-y-1/2 text-gray-600">
@@ -83,7 +83,7 @@
                             </div>
                             <div class="relative">
                                     <input :type="showNewPw ? 'text' : 'password'" v-model="account.confirm_password" 
-                                    placeholder="Enter new password" class="w-full px-3 py-2 pr-9 border border-gray-300 
+                                    placeholder="Confirm password" class="w-full px-3 py-2 pr-9 border border-gray-300 
                                     rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
                                     <button type="button" @click="showNewPw = !showNewPw" class="absolute right-2.5 top-1/2 
                                     -translate-y-1/2 text-gray-600">
@@ -125,7 +125,7 @@ const currentYear = new Date().getFullYear()
 const account = reactive({
     full_name: '',
     username: '',
-    email: '',
+    email: '',  // This should store the email
     new_password: '',
     confirm_password: '',
 })
@@ -134,10 +134,13 @@ const accountError = ref('')
 const showNewPw = ref(false)
 
 watch(currentUser, (u) => {
+    console.log('Current user data:', u) // Debug: check what's available
     if (u?.name) {
+        // Use name as email (in Frappe, name is usually the email)
         account.full_name = u.full_name || u.username || ''
         account.username = u.username || ''
-        account.email = u.name || u.email || ''
+        account.email = u.name || u.email || ''  // name is the email
+        console.log('Account email set to:', account.email)
     }
 }, { immediate: true })
 
@@ -161,16 +164,28 @@ async function saveAccount() {
         }
     }
 
+    // IMPORTANT: Make sure we have the email
+    if (!account.email) {
+        accountError.value = 'User email not found. Please refresh the page.'
+        return
+    }
+
     savingAccount.value = true
     try {
+        // 1. Update account info
         await updateAccountInfo({
             email: account.email,
             full_name: account.full_name,
             username: account.username,
         })
 
+        // 2. If password change is requested
         if (wantsPasswordChange) {
-            await updatePassword(account.new_password)
+            // Use the email here, not the username!
+            await updatePassword(
+                account.new_password,
+                account.email  // This should be "administrator@example.com", not "Administrator"
+            )
             account.new_password = ''
             account.confirm_password = ''
         }

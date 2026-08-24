@@ -58,7 +58,7 @@ const navItems = [
   { name: 'Reports', to: '/reports', icon: 'bar-chart-2' },
   { name: 'Suppliers', to: '/suppliers', icon: 'truck' },
   { name: 'Users', to: '/users', icon: 'users' },
-  { name: 'Settings', to: '/settings', icon: 'settings' },
+  /* { name: 'Settings', to: '/settings', icon: 'settings' }, */
 ]
 
 const isActive = (path) => route.path === path
