@@ -54,8 +54,8 @@
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Withdrawal Information</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm font-medium text-gray-700 mb-1">Reference No <span class="text-red-500">*</span></p>
-                            <input type="text" v-model="form.reference_no" placeholder="e.g., RC-2026-0001" class="w-full px-3 py-2 text-sm
+                            <p class="text-sm font-medium text-gray-700 mb-1">Withdrawal No <span class="text-red-500">*</span></p>
+                            <input type="text" v-model="form.reference_no" placeholder="e.g., WD-2026-0001" class="w-full px-3 py-2 text-sm
                             border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
                         </div>
                         <div>
